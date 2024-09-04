@@ -56,7 +56,7 @@ app.delete('/delete-period/:id', deletePeriod);
 app.patch('/periods/:id/restorePeriod', restorePeriod);
 
 const port = process.env.APP_PORT || 5000;
-const db = process.env.MONGODB_URI || 'mongodb://localhost:27017/spollnet';
+const db = process.env.MONGODB_URI || 'mongodb+srv://josueadrian042006:VDSV9Wo5Wepv50mw@spollnetcluster.s9tvt.mongodb.net/spollnet?retryWrites=true&w=majority';
 
 mongoose.connect(db)
   .then(() => {
