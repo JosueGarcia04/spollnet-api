@@ -4,12 +4,14 @@ export const votar = async (req, res) => {
   const { candidato } = req.body;
 
   try {
+    // Encuentra el documento con los candidatos
     const doc = await Candidato.findOne();
 
     if (!doc) {
       return res.status(404).json({ message: 'Candidatos no encontrados' });
     }
 
+    // Incrementa el voto para el candidato específico
     if (doc[candidato] !== undefined) {
       doc[candidato] += 1;
       await doc.save();

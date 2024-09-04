@@ -1,5 +1,3 @@
-import { Candidato } from '../../../models/votes.mjs';
-
 export const getNumberofVotes = async (req, res) => {
   try {
     const doc = await Candidato.findOne();

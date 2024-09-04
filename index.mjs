@@ -47,7 +47,7 @@ app.delete('/delete-newsletter/:id', deleteNewsletter);
 app.patch('/restore-newsletter/:id', restoreNewsletter);
 app.get('/dataPeriodInformation', getDataPeriodInformation);
 app.delete('/periods/:id/permanentPeriod', deletePeriodPermanently);
-app.post('/votes', votar);
+app.post('/votar', votar);
 app.get('/get-votes', getNumberofVotes);
 app.post('/add-period', addPeriod);
 app.get('/get-periods', getAllPeriods);
