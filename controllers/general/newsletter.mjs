@@ -1,12 +1,34 @@
 import { News } from '../../models/news.mjs';
+import multer from 'multer';
+import path from 'path';
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+export const upload  = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 } 
+});
 
 export const addNewsletter = async (req, res) => {
   try {
     const { title, description } = req.body;
-    const newNewsletter = new News({ title, description });
+    const imagePath = req.file ? req.file.filename : null;
+
+    if (!title || !description || !imagePath) {
+      return res.status(400).json({ error: 'Título, descripción e imagen son requeridos.' });
+    }
+
+    const newNewsletter = new News({ title, description, image: imagePath });
     await newNewsletter.save();
     res.status(201).json(newNewsletter);
   } catch (error) {
+    console.error('Error en addNewsletter:', error);
     res.status(500).json({ error: 'Error adding newsletter' });
   }
 };

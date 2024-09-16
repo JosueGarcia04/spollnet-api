@@ -9,6 +9,13 @@ const newsSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  image: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
   isDeleted: {
     type: Boolean,
     default: false

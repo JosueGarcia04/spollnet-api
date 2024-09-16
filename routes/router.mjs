@@ -36,7 +36,7 @@ spollnetRouter.get('/dataStudentInformation', getDataStudentInformation);
 spollnetRouter.patch('/students/:id', updateStudent);
 spollnetRouter.get('/profile/:id', getProfile);
 spollnetRouter.put('/profile/:id', updateProfile);
-spollnetRouter.post('/add-newsletter', addNewsletter);
+spollnetRouter.post('/add-newsletter', upload.single('image'), addNewsletter);
 spollnetRouter.get('/get-all-newsletters', getAllNewsletters);
 spollnetRouter.delete('/delete-newsletter/:id', deleteNewsletter);
 spollnetRouter.patch('/restore-newsletter/:id', restoreNewsletter);
