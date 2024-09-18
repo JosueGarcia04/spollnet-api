@@ -7,7 +7,6 @@ import { deleteStudentPermanently, restoreStudent } from '../controllers/coordin
 import { getAllStudents } from '../controllers/coordinator/students/getAllStudents.mjs';
 import { deleteStudent, banStudent } from '../controllers/coordinator/students/deleteBanStudent.mjs';
 import { getDataStudentInformation } from '../controllers/coordinator/students/dataStudentInformation';
-import { updateStudent } from '../controllers/coordinator/students/editStudent.mjs';
 import { getProfile, updateProfile} from '../controllers/students/dataProfile.mjs';
 import { addNewsletter, getAllNewsletters, deleteNewsletter, restoreNewsletter } from '../controllers/general/newsletter.mjs'; 
 import { getDataPeriodInformation } from '../controllers/coordinator/periods/dataPeriodInformation.mjs';
@@ -33,7 +32,6 @@ spollnetRouter.get('/students', getAllStudents);
 spollnetRouter.delete('/students/:id', deleteStudent);  
 spollnetRouter.patch('/students/:id/ban', banStudent);
 spollnetRouter.get('/dataStudentInformation', getDataStudentInformation);
-spollnetRouter.patch('/students/:id', updateStudent);
 spollnetRouter.get('/profile/:id', getProfile);
 spollnetRouter.put('/profile/:id', updateProfile);
 spollnetRouter.post('/add-newsletter', upload.single('image'), addNewsletter);

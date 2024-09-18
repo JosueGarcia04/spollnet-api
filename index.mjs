@@ -9,7 +9,6 @@
   import { getAllStudents } from './controllers/coordinator/students/getAllStudents.mjs';
   import { deleteStudent, banStudent } from './controllers/coordinator/students/DeleteBannedStudent.mjs';
   import { getDataStudentInformation } from './controllers/coordinator/students/dataStudentInformation.mjs'; 
-  import { updateStudent } from './controllers/coordinator/students/editStudent.mjs';
   import { getProfile, updateProfile} from './controllers/students/dataProfile.mjs';
   import { addNewsletter, getAllNewsletters, deleteNewsletter, restoreNewsletter} from './controllers/general/newsletter.mjs'
   import { getDataPeriodInformation } from './controllers/coordinator/periods/dataPeriodInformation.mjs';
@@ -37,7 +36,6 @@
   app.delete('/students/:id', deleteStudent);
   app.patch('/students/:id/ban', banStudent);
   app.get('/dataStudentInformation', getDataStudentInformation);
-  app.patch('/students/:id', updateStudent);
   app.get('/profile/:id', getProfile);
   app.put('/profile/:id', updateProfile);
   app.post('/add-newsletter', upload.single('image'), addNewsletter);
