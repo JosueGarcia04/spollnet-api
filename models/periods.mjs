@@ -14,6 +14,18 @@ const PeriodSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
+    startTime: {
+        type: String,
+        required: true,
+    },
+    endTime: {
+        type: String,
+        required: true,
+    },
+    isSameDay: {
+        type: Boolean,
+        default: true,
+    },
     isDeleted: { 
         type: Boolean, 
         default: false 

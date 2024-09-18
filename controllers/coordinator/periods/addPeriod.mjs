@@ -2,16 +2,18 @@ import { Period } from '../../../models/periods.mjs'
 
 export const addPeriod = async (req, res) => {
     try {
-        const { name, startDate, endDate } = req.body;
-        console.log('Received Data:', { name, startDate, endDate }); 
-        if (!name || !startDate || !endDate) {
-            return res.status(400).json({ msg: "Todos los campos son obligatorios" });
-        }
+        const { name, startDate, endDate, startTime, endTime, isSameDay } = req.body;
+    if (!name || !startDate || !endTime || !startTime ) {
+      return res.status(400).json({ msg: "Todos los campos son obligatorios" });
+    }
 
         const newPeriod = new Period({
             name,
             startDate,
-            endDate
+            endDate: isSameDay ? startDate : endDate,
+            startTime,
+            endTime,
+            isSameDay
         });
         await newPeriod.save();
         res.status(201).json({ msg: "Periodo añadido exitosamente", period: newPeriod });
